@@ -8,6 +8,10 @@ setup(
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     keywords=['web scraping', 'scraping', 'proxy rotating', 'html'],
+    download_url='https://github.com/nicolasmarin/scrapy-scraping-link/archive/refs/heads/main.zip',
+    install_requires=[
+        'scrapy',
+    ],
     author='Nicolas Marin',
     author_email='info@scraping.link',
     license='MIT',
@@ -23,5 +27,4 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     python_requires='>=3.5',
-    install_requires=['scrapy'],
 )
