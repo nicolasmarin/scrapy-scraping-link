@@ -26,7 +26,7 @@ CONCURRENT_REQUESTS = 1
 
 Inherit your spiders from `ScrapingLinkSpider` and yield a `ScrapingLinkRequest`.
 
-Below you can see an example from the spider in [httpbin.py](examples/httpbin/httpbin/spiders/httpbin.py).
+Below you can see an example from the spider in [parascrapear.py](examples/httpbin/httpbin/spiders/parascrapear.py).
 
 ```python
 from scrapy import Spider
@@ -61,7 +61,7 @@ Add your API key to [settings.py](examples/httpbin/httpbin/settings.py).
 To run the examples you need to clone this repository. In your terminal, go to `examples/httpbin/httpbin` and run the example spider with:
 
 ```bash
-scrapy crawl httpbin
+scrapy runspider parascrapear.py
 ```
 
 #### Customer Support
