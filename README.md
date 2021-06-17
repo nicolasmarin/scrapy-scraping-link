@@ -16,7 +16,7 @@ Add your `ScrapingLink_API_KEY` and the `ScrapingLinkMiddleware` to your project
 SCRAPINGLINK_API_KEY = 'REPLACE-WITH-YOUR-API-KEY'
 
 DOWNLOADER_MIDDLEWARES = {
-    'scrapy_ScrapingLink.ScrapingLinkMiddleware': 700,
+    'scrapy_scraping_link.ScrapingLinkMiddleware': 700,
 }
 
 CONCURRENT_REQUESTS = 1
@@ -32,26 +32,24 @@ Below you can see an example from the spider in [httpbin.py](examples/httpbin/ht
 from scrapy import Spider
 from scrapy_scraping_link import ScrapingLinkSpider, ScrapingLinkRequest
 
-class HttpbinSpider(Spider):
-    name = 'httpbin'
-    start_urls = [
-        'https://httpbin.org',
-    ]
 
-    def start_requests(self):
-        for url in self.start_urls:
-            yield ScrapingLinkRequest(url, params={
-                # 'render': 1,
-            },
-            headers={
-                # 'Accept-Language': 'En-US',
-            },
-            cookies={
-                # 'name_1': 'value_1',
-            })
+class ParascrapearSpider(Spider):
+    name = 'parascrapear'
+    allowed_domains = ['parascrapear.com']
+    start_urls = ['http://parascrapear.com/']
 
     def parse(self, response):
-        ...
+        print('Parseando ' + response.url)       
+        
+        next_urls = response.css('a::attr(href)').getall()
+        for next_url in next_urls:
+            if next_url is not None:
+                yield ScrapingLinkRequest(response.urljoin(next_url))
+        
+        sentences = response.css('q::text').getall()
+        for sentence in sentences:
+            print(sentence)
+
 ```
 
 You can pass [ScrapingLink parameters](https://scraping.link/documentacion/) in the params argument of a ScrapingLinkRequest. Headers and cookies are passed like a normal Scrapy Request. ScrapingLinkRequests formats all parameters, headers and cookies to the format expected by the API.
