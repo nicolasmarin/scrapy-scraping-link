@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='scrapy-scraping-link',
-    version='0.0.3',
+    version='0.0.5',
     url='https://github.com/nicolasmarin/scrapy-scraping-link',
     description='Scrapy middleware for Scraping.link',
     long_description=open('README.md').read(),

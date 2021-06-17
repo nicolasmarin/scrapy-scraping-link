@@ -25,7 +25,7 @@ class ScrapingLinkMiddleware:
     def _get_url(self, params):
         qs_params = dict()
         qs_params.update(params)
-	qs_params["api_token"] = self.api_key
+        qs_params["api_token"] = self.api_key
 
         qs = '&'.join(f'{k}={v}' for k, v in qs_params.items())
         return f'{self.api_url}?{qs}'

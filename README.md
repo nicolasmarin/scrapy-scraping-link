@@ -41,7 +41,7 @@ class HttpbinSpider(Spider):
     def start_requests(self):
         for url in self.start_urls:
             yield ScrapingLinkRequest(url, params={
-                # 'render': False,
+                # 'render': 1,
             },
             headers={
                 # 'Accept-Language': 'En-US',
